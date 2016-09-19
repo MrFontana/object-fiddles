@@ -255,7 +255,6 @@ user2["email"] = "tyler.mcginnis@devmounta.in";
 // user2.sayName();
 
 
-
 //NEXT PROBLEM
 
 
@@ -264,17 +263,24 @@ user2["email"] = "tyler.mcginnis@devmounta.in";
 //Create an empty object called methodCollection.
 
 //Code Here
+var methodCollection = {};
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
 //Code Here
-
+methodCollection.alertHello = function() {
+  alert("hello");
+};
+methodCollection.logHello = function() {
+  console.log("hello");
+};
 //Now call your alertHello and logHello methods.
 
 //Code Here
-
+// methodCollection.alertHello();
+// methodCollection.logHello();
 
 
 //NEXT PROBLEM
@@ -285,18 +291,33 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // parameters and returns a new object with all of the information that you passed in.
 
 //Code Here
-
-
+function makePerson(name, birthday, ssn){
+    var humanClone ={
+      name: name,
+      birthday: birthday,
+      ssn: ssn
+    };
+    return humanClone;
+}
+// console.log(makePerson("Kevin", "12/18/1989", "000 00 0000"));
 
 //NEXT PROBLEM
 
 
 
-// Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
+// Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke
+// makeCard, you get a brand new credit card.
 
 //Code Here
-
-
+function makeCard(carNumber, expirationDate, securityCode) {
+  var newCard = {
+    cardNumber: carNumber,
+    expirationDate: expirationDate,
+    securityCode: securityCode
+  };
+  return newCard;
+}
+makeCard();
 
 //NEXT PROBLEM
 
@@ -308,3 +329,14 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 */
 
 //Code Here
+function bindCard(humanClone, newCard) { //decalring function
+  var newLife = {}; //declaring a new object
+  for (var prop in humanClone) { //using a for in loop to access humanClones properties
+    newLife[prop] = humanClone[prop]; //this line of code sets newLife at [prop] equal to humanClone at the same [prop] (((((first value of first key)))))
+  }
+  for (var prop in newCard) { //using a for in loop to access newCards properties
+    newLife[prop] = newCard[prop]; //this line of code sets newLife at [prop] equal to newCard at the same [prop] (((((first value of first key)))))
+  };
+  return newLife; //returns the sum of the two objects
+}
+console.log(bindCard);
